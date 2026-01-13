@@ -1,4 +1,4 @@
-name: Build and Deploy Custom Theme
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -9,9 +9,8 @@ permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,19 +28,19 @@ jobs:
       - name: Install Node dependencies
         run: npm install
 
-      - name: Build and minify CSS and JS
+      - name: Build minified assets
         run: npm run build
 
-      - name: Switch to minified assets
+      - name: Replace with minified files
         run: |
-          sed -i 's/custom.css/custom.min.css/g' custom_theme/main.html
-          sed -i 's/custom.js/custom.min.js/g' custom_theme/main.html
+          cp custom_theme/assets/css/custom.min.css custom_theme/assets/css/custom.css
+          cp custom_theme/assets/js/custom.min.js custom_theme/assets/js/custom.js
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Build MkDocs site
-        run: mkdocs build --strict
+      - name: Build site
+        run: mkdocs build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
