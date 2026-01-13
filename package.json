@@ -1,0 +1,18 @@
+{
+    "name": "pyweb-custom-theme",
+    "version": "1.0.0",
+    "description": "Custom MkDocs theme with build pipeline",
+    "scripts": {
+      "build:css": "postcss custom_theme/assets/css/custom.css -o custom_theme/assets/css/custom.min.css",
+      "build:js": "terser custom_theme/assets/js/custom.js -o custom_theme/assets/js/custom.min.js --compress --mangle",
+      "build": "npm run build:css && npm run build:js"
+    },
+    "devDependencies": {
+      "postcss": "^8.4.31",
+      "postcss-cli": "^11.0.0",
+      "autoprefixer": "^10.4.16",
+      "cssnano": "^6.0.1",
+      "terser": "^5.24.0"
+    }
+  }
+  

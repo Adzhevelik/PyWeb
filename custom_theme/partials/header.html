@@ -1,0 +1,26 @@
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo">
+            <a href="{{ config.site_url }}">
+                <i class="fas fa-code"></i>
+                <span>{{ config.site_name }}</span>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-list">
+                {% for nav_item in nav %}
+                <li class="nav-item">
+                    <a href="{{ nav_item.url | url }}" 
+                       class="nav-link {% if nav_item.active %}active{% endif %}">
+                        {{ nav_item.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+</header>

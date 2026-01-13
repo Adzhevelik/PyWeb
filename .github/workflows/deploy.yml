@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy Custom Theme
 
 on:
   push:
@@ -9,24 +9,39 @@ permissions:
   contents: write
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+      - name: Install Node dependencies
+        run: npm install
 
-      - name: Build site
+      - name: Build and minify CSS and JS
+        run: npm run build
+
+      - name: Switch to minified assets
         run: |
-          mkdocs build
+          sed -i 's/custom.css/custom.min.css/g' custom_theme/main.html
+          sed -i 's/custom.js/custom.min.js/g' custom_theme/main.html
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build MkDocs site
+        run: mkdocs build --strict
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
