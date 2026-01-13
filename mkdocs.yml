@@ -1,0 +1,26 @@
+site_name: Статический сайт на MkDocs
+site_description: Учебный проект по созданию и развертыванию статических сайтов
+site_author: Anastasiia
+
+theme:
+  name: material
+  language: ru
+  palette:
+    primary: indigo
+    accent: indigo
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+
+nav:
+  - Главная: index.md
+  - O проекте: about.md
+  - Отчет: report.md
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      linenums: false
+  - toc:
+      permalink: true
