@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Учебный проект по созданию и развертыванию статических сайтов с кастомной темой">
+    <meta name="author" content="Anastasiia">
+    <meta name="keywords" content="MkDocs, статический сайт, Python, GitHub Pages">
+    <title>Отчет 2.2 - Статический сайт на MkDocs</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
+    <link rel="stylesheet" href="../assets/css/custom.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-container">
+        <div class="logo">
+            <a href="https://adzhevelik.github.io/PyWeb/">
+                <i class="fas fa-code"></i>
+                <span>Статический сайт на MkDocs</span>
+            </a>
+        </div>
+        
+        <nav class="main-nav">
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-list">
+                
+                <li class="nav-item">
+                    <a href=".." 
+                       class="nav-link ">
+                        Главная
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="../about/" 
+                       class="nav-link ">
+                        О проекте
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="../report/" 
+                       class="nav-link ">
+                        Отчет 2.1
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="./" 
+                       class="nav-link active">
+                        Отчет 2.2
+                    </a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+    
+    <main class="content-wrapper">
+        <div class="container">
+            <article class="main-content">
+                <h1 id="22">Отчет по заданию 2.2</h1>
+<h2 id="_1">Выполненные задачи</h2>
+<h3 id="1">1. Кастомная тема</h3>
+<p>Создана собственная тема с использованием HTML, CSS, JavaScript и Jinja2.</p>
+<p>Структура:
+- <code>custom_theme/main.html</code> - основной шаблон
+- <code>custom_theme/partials/header.html</code> - header
+- <code>custom_theme/partials/footer.html</code> - footer
+- <code>custom_theme/assets/css/custom.css</code> - стили
+- <code>custom_theme/assets/js/custom.js</code> - скрипты</p>
+<p>Дизайн: розовая цветовая схема, флэт-дизайн, овальные формы.</p>
+<h3 id="2">2. Метаданные</h3>
+<p>Добавлены мета-теги в <code>main.html</code>:
+- description
+- author
+- keywords</p>
+<h3 id="3">3. Автоматизация сборки</h3>
+<p>Настроен GitHub Actions workflow для:
+- Минификации CSS через PostCSS
+- Минификации JS через Terser
+- Сборки сайта через MkDocs
+- Деплоя на GitHub Pages</p>
+<p>Файлы конфигурации:
+- <code>package.json</code> - npm зависимости и скрипты
+- <code>postcss.config.js</code> - настройки PostCSS
+- <code>.github/workflows/deploy.yml</code> - пайплайн CI/CD</p>
+<h2 id="_2">Результат</h2>
+<p>Сайт: https://adzhevelik.github.io/PyWeb/</p>
+<p>Репозиторий: https://github.com/Adzhevelik/PyWeb</p>
+<h2 id="_3">Технологии</h2>
+<p>Python 3.11, MkDocs, HTML5, CSS3, JavaScript, PostCSS, Terser, GitHub Actions, GitHub Pages</p>
+            </article>
+            
+            
+            <aside class="toc-sidebar">
+                <h3>Содержание</h3>
+                <ul>
+                
+                    <li><a href="#22">Отчет по заданию 2.2</a>
+                    
+                        <ul>
+                        
+                            <li><a href="#_1">Выполненные задачи</a></li>
+                        
+                            <li><a href="#_2">Результат</a></li>
+                        
+                            <li><a href="#_3">Технологии</a></li>
+                        
+                        </ul>
+                    
+                    </li>
+                
+                </ul>
+            </aside>
+            
+        </div>
+    </main>
+    
+    
+    
+    <script src="../assets/js/custom.min.js"></script>
+</body>
+</html>
