@@ -1,0 +1,42 @@
+name: Docker Deploy Package
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build site
+        run: |
+          npm install
+          pip install -r requirements.txt
+          npm run build
+          cp custom_theme/assets/css/custom.min.css custom_theme/assets/css/custom.css
+          cp custom_theme/assets/js/custom.min.js custom_theme/assets/js/custom.js
+          mkdocs build
+
+      - name: Create deploy package
+        run: |
+          tar -czf deploy.tar.gz Dockerfile docker-compose.yml site/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-package
+          path: deploy.tar.gz
+          
